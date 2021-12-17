@@ -7,10 +7,7 @@ IOP 2-layer base code
 """
 # fortran wrapper
 from numpy import f2py
-try:
-    sourcefile = open('/Users/jakravit/pyProjects/EAP/Dmmex_R14B_4.f','rb')
-except:
-    sourcefile = open('/content/EAP/src/Dmmex_R14B_4.f','rb') # to run in google collab
+sourcefile = open('/Users/jakravit/git/EAP/Dmmex_R14B_4.f','rb')
 sourcecode = sourcefile.read()
 f2py.compile(sourcecode, modulename='Dmmex_R14B_4')
 import Dmmex_R14B_4
