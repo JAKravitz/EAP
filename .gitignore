@@ -127,3 +127,8 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# other
+Dmmex_R14B_4.cpython-38-darwin.so
+Dmmex_R14B_4.cpython-38-darwin.so.dSYM/
+Dmmex_R14B_4.cpython-37m-darwin.so.dSYM
