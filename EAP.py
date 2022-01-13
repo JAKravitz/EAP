@@ -97,7 +97,7 @@ def EAP (l, im, Deff, ncore, nshell, Vs, Veff, ci, psd):
     a_sol, a_solm, Qastar2_dir, Qas21 = (np.zeros([len(Deff),len(l)]) for i in range(4))
     
     for nii in np.arange(0,len(l)): # this is the wavelength loop
-        print(nii)
+        # print(nii)
     
         # declare lists to be filled on each iteration of the psd loop
         II, phaseMB, alpha, bbprob, bbprob1, Qbbro, checkMB, Qbro, Qcro, M1 = ([] for i in range (10))

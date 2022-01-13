@@ -22,9 +22,9 @@ optics = {'Green_algae':{},
           'Cyano_red':{},
           'Rhodophytes':{}}
 
-phytodata = pd.read_csv('/Users/jakravit/pyProjects/EAP/phyto_data.csv',
+phytodata = pd.read_csv('/Users/jakravit/git/EAP/phyto_data.csv',
                         index_col=0)
-outpath = '/Users/jakravit/pyProjects/EAP/optics.p'
+outpath = '/Users/jakravit/git/EAP/optics_test.p'
 
 def pandafy (array, Deff):
     out = pd.DataFrame(array, index=Deff)
@@ -47,16 +47,15 @@ for i,k in phytodata.iterrows():
     im = k.filter(regex='^[0-9]')
     meta = k.filter(regex='^[A-Za-z]+')
     Deff = np.arange(k.Dmin, k.Dmax, k.Dint)
-    ncoreX = np.linspace(k.ncoremin, k.ncoremax, 3)
-    nshellX = np.round(np.linspace(k.nshellmin, k.nshellmax,4),2)
-    VsX = np.round(np.linspace(k.Vsmin, k.Vsmax,4),2)
-    VeffX = np.round(np.linspace(k.Veffmin, k.Veffmax, 3),2)
-    # CiX = np.round(np.linspace(k.Cimin, k.Cimax,3),2)  
-    ciX = np.round(np.linspace(k.cimin, k.cimin,3),2)
+    ncoreX = [1.04]
+    nshellX = np.round(np.linspace(k.nshellmin, k.nshellmax,3),2)
+    VsX = [.1, .35, .6]
+    VeffX = [.6]
+    ciX = [2,3,5,7,9,12]
     if k.Size_class == 'pico':
         psdX = [np.arange(.2, 10.2, .2)]
     else:
-        psdX = [np.arange(1,51,1), np.arange(1,102,2)] 
+        psdX = [np.arange(1,102,2)] 
     
     with open(outpath, 'rb') as fp:
         data = pickle.load(fp)
@@ -68,7 +67,6 @@ for i,k in phytodata.iterrows():
             nshell = run[1]
             Vs = run[2]
             Veff = run[3]
-            # Ci = run[4]
             ci = run[4]
             psd = run[5]
         
@@ -96,7 +94,6 @@ for i,k in phytodata.iterrows():
             result['nshell'] = nshell
             result['Vs'] = Vs
             result['Veff'] = Veff
-            # result['Ci'] = Ci
             result['ci'] = ci
             result['psd'] = psd
             result['class'] = meta.Class
