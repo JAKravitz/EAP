@@ -24,7 +24,7 @@ optics = {'Green_algae':{},
 
 phytodata = pd.read_csv('/Users/jakravit/git/EAP/phyto_data.csv',
                         index_col=0)
-outpath = '/Users/jakravit/git/EAP/optics_test.p'
+outpath = '/Users/jakravit/git/EAP_phyto_optics.p'
 
 def pandafy (array, Deff):
     out = pd.DataFrame(array, index=Deff)
@@ -81,7 +81,7 @@ for i,k in phytodata.iterrows():
             print (rname)
     
             # RUN EAP
-            result = EAP(l, im, Deff, ncore, nshell, Vs, Veff, ci, psd)
+            result = EAP(l, im, Deff, ncore, nshell, Vs, Veff, ci*1e6, psd)
             
             # pandafy params so Deff is index
             for param in ['Qc','Sigma_c','cstar','Qb','Sigma_b','bstar','Qa',

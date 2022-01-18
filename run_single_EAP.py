@@ -14,7 +14,8 @@ import itertools
 import time
 
 #%
-phytos = ['C. polylepis', 'Pavlova sp.']
+phytos =  ['Anabaena sp.']
+          #['C. polylepis', 'Pavlova sp.']
           # 'F. pinnata', 'T. rotula', 'H. triquetra',
           # 'K. rotundum', 'G. theta', 'R. lens', 'D. tertiolecta1', 'M. pusilla',
           # 'S. elongatus', 'A. marina']
