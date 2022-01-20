@@ -22,9 +22,9 @@ optics = {'Green_algae':{},
           'Cyano_red':{},
           'Rhodophytes':{}}
 
-phytodata = pd.read_csv('/Users/jkravz311/git/EAP/ph_data4.csv',
+phytodata = pd.read_csv('/Users/jakravit/git/EAP/ph_data4.csv',
                         index_col=0)
-outpath = '/Users/jkravz311/git/EAP_phyto_optics4.p'
+outpath = '/Users/jakravit/git/EAP_phyto_optics4.p'
 
 def pandafy (array, Deff):
     out = pd.DataFrame(array, index=Deff)
