@@ -24,7 +24,7 @@ optics = {'Green_algae':{},
 
 phytodata = pd.read_csv('/Users/jakravit/git/EAP/ph_data3.csv',
                         index_col=0)
-outpath = '/Users/jakravit/git/EAP_phyto_optics.p'
+outpath = '/Users/jakravit/git/EAP_phyto_optics3.p'
 
 def pandafy (array, Deff):
     out = pd.DataFrame(array, index=Deff)
@@ -33,11 +33,11 @@ def pandafy (array, Deff):
 
 # define where to start in batch list
 start = 0 # 0 to start from beginning, else phyto sp name
-# if start == 0:
-#     with open(outpath, 'wb') as fp:
-#         pickle.dump(optics, fp) 
-# else:
-#     phytodata = phytodata.loc[start:,:]
+if start == 0:
+    with open(outpath, 'wb') as fp:
+        pickle.dump(optics, fp) 
+else:
+    phytodata = phytodata.loc[start:,:]
 
 # loop through phyto batch list
 for i,k in phytodata.iterrows():
