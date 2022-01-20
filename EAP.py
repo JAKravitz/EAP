@@ -19,7 +19,8 @@ from scipy.signal import savgol_filter
 
 def EAP (l, im, Deff, ncore, nshell, Vs, Veff, ci, psd):
 
-    im_wv = im.index.values.astype(float) / 1000
+    #im_wv = im.index.values.astype(float) / 1000
+    im_wv = np.arange(.4,.901, .001)
     int_val = np.where(l==.675)[0] # index of 675 nm 
     
     Vc=1 - Vs
@@ -46,7 +47,7 @@ def EAP (l, im, Deff, ncore, nshell, Vs, Veff, ci, psd):
     kcore = 0.041 * np.exp(-11.029 * l)
     
     # shell imag RI
-    kshell_base = im
+    #kshell_base = im
     kshell_base = griddata(im_wv, im.values, l, 'linear',)
     kshell_norm = (6.75e-7/ nmedia) * (0.027 * ci/ Vs) / (4 * np.pi) #scale to this theoretical max unpackaged chl abs at 675 nm
     kshell = kshell_base * (kshell_norm / kshell_base[int_val])
