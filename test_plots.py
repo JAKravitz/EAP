@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
 
-outpath = '/Users/jakravit/git/EAP/optics_test.p'
+outpath = '/Users/jakravit/Desktop/optics_test.p'
 l = np.arange(.4, .9025, .0025).astype(np.float32)
 
 with open(outpath, 'rb') as fp:
@@ -60,17 +60,19 @@ bbdf.columns = cols
 
 #%%
 # colors = {50: 'b', 101:'r'} # psd
-colors = {2:'b', 3:'g', 5:'y', 7:'r', 9:'m', 12:'k'} # ci
+# colors = {2:'b', 3:'g', 5:'y', 7:'r', 9:'m', 12:'k'} # ci
 # colors = {9:'b', 10:'r', 11:'k', 12:'g', 13:'y'} # deff
 # colors = {1.02:'b', 1.04:'r'} # ncore
-# colors = {1.08:'b', 1.12:'r', 1.16:'k', 1.2:'g'} # nshell
+colors = {1.08:'b', 1.12:'r', 1.16:'k', 1.2:'g'} # nshell
 # colors = {.1:'b', .35:'r', .6:'g'} # Vs
 
 fig, (ax1,ax2) = plt.subplots(1,2, figsize=(10,4))
-agrp = adf.groupby('ci')
-bgrp = bbdf.groupby('ci')
+agrp = adf.groupby('nshell')
+bgrp = bbdf.groupby('nshell')
 for i, k in agrp:
     print (i)
     k.iloc[:,:-6].T.plot(ax=ax1, color=colors[i], legend=False)
 for i, k in bgrp:
     k.iloc[:,:-6].T.plot(ax=ax2, color=colors[i], legend=False)
+fig.suptitle('Pavlova sp. - nshell')
+fig.savefig('/Users/jakravit/Desktop/pav_nshell.png',bbox_inches='tight', dpi=300)
