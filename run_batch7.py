@@ -22,9 +22,9 @@ optics = {'Green_algae':{},
           'Cyano_red':{},
           'Rhodophytes':{}}
 
-phytodata = pd.read_csv('/Users/jakravit/git/EAP/ph_data3.csv',
+phytodata = pd.read_csv('/Users/jakravit/git/EAP/ph_data7.csv',
                         index_col=0)
-outpath = '/Users/jakravit/git/EAP_phyto_optics3.p'
+outpath = '/Users/jakravit/git/EAP_phyto_optics7.p'
 
 def pandafy (array, Deff):
     out = pd.DataFrame(array, index=Deff)
@@ -106,4 +106,6 @@ for i,k in phytodata.iterrows():
     
     with open(outpath, 'wb') as fp:
         pickle.dump(data,fp)
+
+
 

@@ -63,4 +63,12 @@ s = set(sp) - set(sp2)
 with open('/Users/jakravit/git/EAP_phyto_optics.p', 'wb') as fp:
     pickle.dump(data0,fp)
 
+#%%
+import json
+with open('/Users/jakravit/Desktop/data1.json','w') as f:
+    json.dump(data1,f)
+
+
+
+
 
