@@ -72,17 +72,19 @@ for data in dlist:
 sp = keys(data0)
 print('\n')
 print (len(sp))
+print ('\n')
 
 #%%
 # with open('/Users/jakravit/git/EAP_phyto_optics_final.p', 'wb') as fp:
 #     pickle.dump(data0,fp)
 
 for cl in classes:
+    print (cl)
     
     # with open('/Users/jakravit/EAP_phytoplankton_dataset/{}.p'.format(cl), 'wb') as fp:
     #     pickle.dump(data0[cl], fp)
     
-    with open('/Users/jakravit/EAP_phytoplankton_dataset/{}.p'.format(cl), 'wb') as fp:
+    with open('/Users/jakravit/data/EAP_phytoplankton_dataset/{}.p'.format(cl), 'wb') as fp:
         pickle.dump(data0[cl], fp)
 
 
