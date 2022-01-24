@@ -25,7 +25,7 @@ def pandafy (array, Deff):
     out = pd.DataFrame(array, index=Deff)
     return out
 
-outpath = '/Users/jakravit/git/EAP/optics_test.p'
+outpath = '/Users/jakravit/git/EAP_optics_test.p'
 
 #%
 # wavelength range and resolution (changing this changes your interp value when normalising kshell)
