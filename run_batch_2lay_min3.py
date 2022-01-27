@@ -14,8 +14,8 @@ import statsmodels.api as sm
 import random
 from scipy.interpolate import griddata
 
-species = ['SAN1', 'AUS1','ICE1','KUW1','NIG1','SAH1','OAH1']
-nprimepath = '/Users/jakravit/pyProjects/EAP/build/stramski_2007_mineral_nprime.csv'
+species = ['SAH1','OAH1']
+nprimepath = '/Users/jakravit/Desktop/eap_truth_iop_data/stramski_2007_mineral_nprime.csv'
 nprime = pd.read_csv(nprimepath,index_col=0)
 
 # sample info
@@ -60,7 +60,7 @@ for sp in species:
     # add to total minerals dict
     minerals[sp] = final
                 
-    with open('/Users/jakravit/pyProjects/EAP/build/minerals.p', 'wb') as fp:
+    with open('/Users/jakravit/git/EAP_mineral_dataset/minerals3.p', 'wb') as fp:
         pickle.dump(minerals,fp)    
 
 

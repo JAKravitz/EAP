@@ -66,7 +66,10 @@ def twolay_min (l, kcore, nreal, rho, j, dmax):
     mcore = ncore - kcore*1j
     mhom = nhom - khom*1j
     
-    psd = np.arange(0.1,dmax,0.1)
+    if dmax in [5, 10]:
+        psd = np.arange(0.05,dmax,0.05)
+    else:
+        psd = np.arange(0.5,dmax,0.5)
     #psd = np.arange(0.05,120.05,0.05)
     deltad=1
     deltadm=1
