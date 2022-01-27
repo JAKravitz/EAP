@@ -14,18 +14,18 @@ import itertools
 import time
 
 #%
-phytos =  ['Anabaena sp.']
+phytos =  ['M. aeruginosa']
           #['C. polylepis', 'Pavlova sp.']
           # 'F. pinnata', 'T. rotula', 'H. triquetra',
           # 'K. rotundum', 'G. theta', 'R. lens', 'D. tertiolecta1', 'M. pusilla',
           # 'S. elongatus', 'A. marina']
-phytodata = pd.read_csv('/Users/jakravit/pyProjects/EAP/phyto_data.csv',index_col=0)
+phytodata = pd.read_csv('/Users/jakravit/git/EAP/phyto_data.csv',index_col=0)
 
 def pandafy (array, Deff):
     out = pd.DataFrame(array, index=Deff)
     return out
 
-outpath = '/Users/jakravit/git/EAP_optics_test.p'
+outpath = '/Users/jakravit/git/EAP_optics_single.p'
 
 #%
 # wavelength range and resolution (changing this changes your interp value when normalising kshell)
