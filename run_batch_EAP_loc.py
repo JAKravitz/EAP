@@ -32,8 +32,8 @@ if __name__ == '__main__':
     client = Client(cluster)
     # client
     
-    phytodata = pd.read_csv('/nobackup/jakravit/data/EAP/phyto_data_test.csv')
-    outpath = '/nobackup/jakravit/data/EAP/phyto_siop_lib.p'
+    phytodata = pd.read_csv('/nobackup/jakravit/git/EAP/phyto_data_test.csv')
+    outpath = '/nobackup/jakravit/data/phyto_siop_lib.p'
     l = np.arange(.4, .9025, .0025).astype(np.float32) 
     
     def pandafy (array, Deff):
