@@ -32,7 +32,7 @@ if __name__ == '__main__':
     client = Client(cluster)
     # client
     
-    phytodata = pd.read_csv('/nobackup/jakravit/data/EAP/phyto_data.csv')
+    phytodata = pd.read_csv('/nobackup/jakravit/data/EAP/phyto_data_test.csv')
     outpath = '/nobackup/jakravit/data/EAP/phyto_siop_lib.p'
     l = np.arange(.4, .9025, .0025).astype(np.float32) 
     
@@ -61,7 +61,10 @@ if __name__ == '__main__':
                   'astar',
                   'Qbb',
                   'Sigma_bb',
-                  'bbstar',]
+                  'bbstar',
+                  'Phy_C',
+                  'Ci',
+                  'psdvol']
     
     # loop through phyto list
     count = 0
@@ -83,10 +86,13 @@ if __name__ == '__main__':
                          k.Dint)
         ncoreX = [1.04]
         nshellX = np.round(np.linspace(k.nshellmin, 
-                                       k.nshellmax, 3),2)
-        VsX = [.1, .35, .6]
-        VeffX = [.2, .6]
-        ciX = [2, 3, 5, 7, 9, 12]
+                                       k.nshellmax, 2),2) # change back to 3
+        # VsX = [.1, .35, .6]
+        VsX = [.35]
+        # VeffX = [.2, .6]
+        VeffX = [.6]
+        # ciX = [2, 3, 5, 7, 9, 12]
+        ciX = [3, 7,]
         if k.Size_class == 'pico':
             psdX = [np.arange(.2, 10.2, .2)]
         else:
@@ -138,7 +144,10 @@ if __name__ == '__main__':
         for rname in data[pft][phyto].keys():
             result = {}
             for param in parameters:
-                result[param] = pandafy(data[pft][phyto][rname][param], Deff)
+                if param in ['Phy_C','Ci','psdvol']:
+                    result[param] = data[pft][phyto][rname][param]
+                else:
+                    result[param] = pandafy(data[pft][phyto][rname][param], Deff)
             
             # add run info to dataframe
             result['Deff'] = Deff

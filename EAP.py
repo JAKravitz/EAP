@@ -7,7 +7,10 @@ IOP 2-layer base code
 """
 # fortran wrapper
 from numpy import f2py
-sourcefile = open('/nobackup/jakravit/data/EAP/Dmmex_R14B_4.f','rb')
+try:
+    sourcefile = open('/nobackup/jakravit/data/EAP/Dmmex_R14B_4.f','rb')
+except:
+    sourcefile = open('/Users/jakravit/git/EAP/Dmmex_R14B_4.f','rb')
 sourcecode = sourcefile.read()
 f2py.compile(sourcecode, modulename='Dmmex_R14B_4')
 import Dmmex_R14B_4
@@ -61,9 +64,9 @@ def EAP (l, im, Deff, ncore, nshell, Vs, Veff, ci, psd):
     ncore = ncore + np.imag(analytic_signal(kcore))
     khom = kcore*Vc + kshell*Vs # imag RI
     nhom = ncore*Vc + nshell*Vs # real RI
-    # nhom660 = nhom[idx660]
-    # dif = n660_stram - nhom660
-    # nhom = nhom + dif # real RI accounting for carbon (Ci) using stramski98 eqs
+    idx660 = np.where(l==.660)[0]
+    nhom660 = nhom[idx660] # for calc of phy carbon (Ci) 
+    Ci = 3441.055*nhom660 -3404.99 # intracell Carbon using stramski 1999 eq.4
     mshell = nshell - kshell*1j
     mcore = ncore - kcore*1j
     # mhom = nhom - khom*1j
@@ -226,8 +229,10 @@ def EAP (l, im, Deff, ncore, nshell, Vs, Veff, ci, psd):
                        'Sigma_bb': Sigma_bb,
                        'bbstar': savgol_filter(bb, 11, 3),
                        'VSF': VSF,
-                       'psdvol': psdvol,
+                       'Phy_C': psdvol * Ci,
+                       'Ci': Ci,
+                       'psdvol':psdvol,
                        'VSF_theta': theta,
-                       'VSF_angles': np.rad2deg(theta)} 
+                       'VSF_angles':np.rad2deg(theta)} 
              
     return result

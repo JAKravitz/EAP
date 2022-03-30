@@ -29,7 +29,7 @@ if __name__ == '__main__':
     # client
     
     #%
-    phytos =  ['C. polylepis', 'Pavlova sp.']
+    phytos =  ['C. polylepis']# , 'Pavlova sp.']
               # 'F. pinnata', 'T. rotula', 'H. triquetra',
               # 'K. rotundum', 'G. theta', 'R. lens', 'D. tertiolecta1', 'M. pusilla',
               # 'S. elongatus', 'A. marina']
@@ -52,13 +52,17 @@ if __name__ == '__main__':
                   'astar',
                   'Qbb',
                   'Sigma_bb',
-                  'bbstar',]
+                  'bbstar',
+                  'Phy_C',
+                  'Ci',
+                  'psdvol']
     
     #%
     # wavelength range and resolution (changing this changes your interp value when normalising kshell)
     l = np.arange(.4, .9025, .0025).astype(np.float32) 
     
-    df_phytos = phytodata[(phytodata['Species'] == 'C. polylepis') | (phytodata['Species'] == 'Pavlova sp.')]
+    # df_phytos = phytodata[(phytodata['Species'] == 'C. polylepis') | (phytodata['Species'] == 'Pavlova sp.')]
+    df_phytos = phytodata[phytodata['Species'].isin(phytos)]
     
     # data = {}
     # for phyto in df_phytos['Species']:
@@ -96,10 +100,12 @@ if __name__ == '__main__':
                          k.Dint)
         ncoreX = [1.04]
         nshellX = np.round(np.linspace(k.nshellmin, 
-                                       k.nshellmax, 3),2)
-        VsX = [.1, .35, .6]
+                                       k.nshellmax, 2),2)
+        # VsX = [.1, .35, .6]
+        VsX = [.35]
         VeffX = [.6]
-        ciX = [2, 3, 5, 7, 9, 12]
+        # ciX = [2, 3, 5, 7, 9, 12]
+        ciX = [3, 7]
         if k.Size_class == 'pico':
             psdX = [np.arange(.2, 10.2, .2)]
         else:
@@ -143,7 +149,7 @@ if __name__ == '__main__':
             data[phyto][rname] = iterlist[i]    
     
         for rname in data[phyto].keys():
-            print(rname)
+            # print(rname)
     
             # RUN EAP
             result = dask.delayed(EAP)(l, 
@@ -162,7 +168,10 @@ if __name__ == '__main__':
         for rname in data[phyto].keys():
             result = {}
             for param in parameters:
-                result[param] = pandafy(data[phyto][rname][param], Deff)
+                if param in ['Phy_C','Ci','psdvol']:
+                    result[param] = data[phyto][rname][param]
+                else:
+                    result[param] = pandafy(data[phyto][rname][param], Deff)
             
             # add run info to dataframe
             result['Deff'] = Deff
