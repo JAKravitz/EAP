@@ -8,7 +8,7 @@ IOP 2-layer base code
 # fortran wrapper
 from numpy import f2py
 try:
-    sourcefile = open('/nobackup/jakravit/data/EAP/Dmmex_R14B_4.f','rb')
+    sourcefile = open('/nobackup/jakravit/git/EAP/Dmmex_R14B_4.f','rb')
 except:
     sourcefile = open('/Users/jakravit/git/EAP/Dmmex_R14B_4.f','rb')
 sourcecode = sourcefile.read()
