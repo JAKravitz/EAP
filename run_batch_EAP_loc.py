@@ -169,6 +169,8 @@ if __name__ == '__main__':
         end = time.time()
         tleng = end - start
         data[pft][phyto]['time'] = tleng
-        
+    
+    with open(outpath, 'wb') as fp:
+        pickle.dump(data,fp)
     
     
