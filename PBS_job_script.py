@@ -1,7 +1,7 @@
 #!/bin/bash -x
 #PBS -l select=10:ncpus=28:mpiprocs=28:model=bro
 #PBS -q normal
-#PBS -l walltime=40:00:00
+#PBS -l walltime=50:00:00
 #PBS -N EAP
 
 cd $PBS_O_WORKDIR
