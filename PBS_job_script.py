@@ -1,5 +1,5 @@
 #PBS -S /bin/csh
-#PBS -l select=10:ncpus=28:mpiprocs=28:model=bro
+#PBS -l select=1:ncpus=28:model=bro
 #PBS -q normal
 #PBS -l walltime=50:00:00
 #PBS -N EAP
@@ -12,8 +12,6 @@ module purge
 module -a use /swbuild/analytix/tools/modulefiles
 module load miniconda3/v4
 source activate tf2_7
-
-mpiexec -np 280 ./a.out
 
 # run python script
 python run_batch_EAP_loc.py
