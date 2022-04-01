@@ -1,6 +1,6 @@
 #PBS -S /bin/csh
 #PBS -l select=1:ncpus=28:model=bro
-#PBS -q normal
+#PBS -q long
 #PBS -l walltime=50:00:00
 #PBS -N EAP
 
