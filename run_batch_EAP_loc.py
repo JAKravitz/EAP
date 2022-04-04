@@ -72,7 +72,7 @@ if __name__ == '__main__':
     for phyto in phytodata['Species']:
         
         start = time.time()
-        print (phyto)
+        # print (phyto)
         
         #load phyto data from dataframe
         k = phytodata[phytodata['Species'] == phyto].copy()   
