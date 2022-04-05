@@ -1,7 +1,9 @@
-#PBS -S /bin/csh
+#PBS -S /bin/bash
 #PBS -l select=1:ncpus=28:model=bro
+#PBS -l site=static_broadwell
 #PBS -q long
-#PBS -l walltime=50:00:00
+#PBS -l walltime=5:00:00
+#PBS -j oe
 #PBS -N EAP
 
 cd $PBS_O_WORKDIR
