@@ -1,5 +1,5 @@
 #PBS -S /bin/bash
-#PBS -l select=1:ncpus=28:model=bro
+#PBS -l select=10:ncpus=28:model=bro
 #PBS -l site=static_broadwell
 #PBS -q long
 #PBS -l walltime=5:00:00
