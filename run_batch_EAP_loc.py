@@ -91,7 +91,7 @@ if __name__ == '__main__':
         # VsX = [.35]
         VeffX = [.2, .6]
         # VeffX = [.6]
-        ciX = [2, 3, 5, 7, 9, 12]
+        ciX = [2.5, 4, 6, 8, 11.5]
         # ciX = [3, 7,]
         if k.Size_class == 'pico':
             psdX = [np.arange(.2, 10.2, .2)]
