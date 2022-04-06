@@ -32,7 +32,7 @@ if __name__ == '__main__':
     client = Client(cluster)
     # client
     
-    phytodata = pd.read_csv('/nobackup/jakravit/git/EAP/phyto_data_test.csv')
+    phytodata = pd.read_csv('/nobackup/jakravit/git/EAP/phyto_data.csv')
     outpath = '/nobackup/jakravit/data/phyto_siop_lib.p'
     l = np.arange(.4, .9025, .0025).astype(np.float32) 
     
@@ -89,7 +89,7 @@ if __name__ == '__main__':
                                        k.nshellmax, 3),2) # change back to 3
         VsX = [.1, .35, .6]
         # VsX = [.35]
-        VeffX = [.2, .6]
+        VeffX = [.2,]
         # VeffX = [.6]
         ciX = [2.5, 4, 6, 8, 11.5]
         # ciX = [3, 7,]
@@ -173,4 +173,6 @@ if __name__ == '__main__':
     with open(outpath, 'wb') as fp:
         pickle.dump(data,fp)
     
-    
+#%%
+# with open('/Users/jakravit/Desktop/phyto_siop_lib.p', 'rb') as fp:
+#     data = pickle.load(fp)
