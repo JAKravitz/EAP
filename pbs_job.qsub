@@ -4,7 +4,7 @@
 #PBS -N eap-parallel
 #PBS -j oe
 #PBS -q devel
-#PBS -o /nobackup/jakravit/EAP/job-test.log
+#PBS -o /nobackup/jakravit/git/EAP/job-test.log
 
 
 # Should likely match the above ncpus. This param is tasks per node, e.g. 2 selects * 10 NCPUS = 20 parallel's tasks running simultaneously
