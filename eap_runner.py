@@ -25,12 +25,12 @@ def main():
     parser = argparse.ArgumentParser(usage="%(prog)s [options]", \
                                 description='runs a single task group')
     parser.add_argument("--log", type=str, help="A logfile, full path.", default=None)
-    parser.add_argument("work", type=str, help="The work set, i.e. file1, file2", nargs=2)
+    parser.add_argument("work", type=str, help="The work set, i.e. file1, file2", nargs=1)
     args = parser.parse_args()
 
     logging.basicConfig(filename=args.log, level=logging.DEBUG)
 
-    fls_log_msg = " ".join([args.work[0], args.work[1]])
+    fls_log_msg = " ".join([args.work[0]])
     t_start = datetime.datetime.now()
     logging.info("workset \"%s\", start %s", fls_log_msg, t_start.strftime("%Y%j%H.%M.%S") )
     
