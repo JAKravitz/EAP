@@ -15,7 +15,7 @@ WDIR=/nobackup/jakravit/git/EAP/
 cd $WDIR
 
 # The work, one line in the text file is one gnu parallel's task
-SET=phy_species.txt
+SET=phy_species_test.txt
 
 # The executable, which is mapped to one line (sets.txt) per task
 EXEC=./eap_runner.sh
