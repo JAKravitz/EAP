@@ -22,6 +22,7 @@ if __name__ == '__main__':
     import random
     import itertools
     import time
+    import hdfdict
     #
     import dask
     import dask.dataframe as dd
@@ -31,10 +32,15 @@ if __name__ == '__main__':
     cluster = LocalCluster()
     client = Client(cluster)
     # client
-    
-    phytodata = pd.read_csv('/nobackup/jakravit/git/EAP/phyto_data.csv')
-    outpath = '/nobackup/jakravit/data/phyto_siop_lib.p'
-    l = np.arange(.4, .9025, .0025).astype(np.float32) 
+    try:
+        phytodata = pd.read_csv('/nobackup/jakravit/git/EAP/phyto_data.csv')
+        outpath = '/nobackup/jakravit/data/phyto_siop_lib.p'
+    except:
+        phytodata = pd.read_csv('/Users/jakravit/git/EAP/eap_vcourt.csv')
+        outpath = '/Users/jakravit/data/vcourt_lib.p' 
+        
+    # l = np.arange(.4, .9025, .0025).astype(np.float32) 
+    l = np.arange(.4, .905, .005).astype(np.float32) 
     
     def pandafy (array, Deff):
         out = pd.DataFrame(array, index=Deff)
@@ -72,7 +78,7 @@ if __name__ == '__main__':
     for phyto in phytodata['Species']:
         
         start = time.time()
-        # print (phyto)
+        print (phyto)
         
         #load phyto data from dataframe
         k = phytodata[phytodata['Species'] == phyto].copy()   
@@ -84,19 +90,17 @@ if __name__ == '__main__':
         Deff = np.arange(k.Dmin,
                          k.Dmax,
                          k.Dint)
-        ncoreX = [1.04]
-        nshellX = np.round(np.linspace(k.nshellmin, 
-                                       k.nshellmax, 3),2) # change back to 3
-        VsX = [.1, .35, .6]
-        # VsX = [.35]
-        VeffX = [.2,]
-        # VeffX = [.6]
-        ciX = [2.5, 4, 6, 8, 11.5]
-        # ciX = [3, 7,]
-        if k.Size_class == 'pico':
-            psdX = [np.arange(.2, 10.2, .2)]
-        else:
-            psdX = [np.arange(1,102,2)]    
+        ncoreX = np.linspace(k.ncoremin,k.ncoremax,1)
+        nshellX = np.round(np.linspace(k.nshellmin, k.nshellmax, 2),2)
+        VsX = np.linspace(k.Vsmin, k.Vsmax, 2)
+        VeffX = np.linspace(k.Veffmin, k.Veffmax, 2)
+        ciX = np.linspace(k.cimin, k.cimax, 1)
+
+        psdX = [np.arange(.5, 40, .5)]
+        # if k.Size_class == 'pico':
+        #     psdX = [np.arange(.2, 10.2, .2)]
+        # else:
+        #     psdX = [np.arange(1,102,2)]    
         
         #add phyto to dictionary
         data[pft][phyto] = {} 
@@ -157,10 +161,10 @@ if __name__ == '__main__':
             result['Veff'] = iterlist[i]['Veff']
             result['ci'] = iterlist[i]['ci']
             result['psd'] = iterlist[i]['psd']
-            result['class'] = meta.Class
+            # result['class'] = meta.Class
             result['PFT1'] = meta.PFT1
-            result['PFT2'] = meta.PFT2
-            result['size_class'] = meta.Size_class
+            # result['PFT2'] = meta.PFT2
+            # result['size_class'] = meta.Size_class
             # result['lambda'] = l
     
             data[pft][phyto][rname] = result
@@ -174,5 +178,9 @@ if __name__ == '__main__':
         pickle.dump(data,fp)
     
 #%%
+
 # with open('/Users/jakravit/Desktop/phyto_siop_lib.p', 'rb') as fp:
 #     data = pickle.load(fp)
+    
+    
+

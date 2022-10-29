@@ -14,15 +14,17 @@ import statsmodels.api as sm
 import random
 from scipy.interpolate import griddata
 
-species = ['SAN1', 'AUS1','ICE1','KUW1','NIG1','SAH1','OAH1']
-nprimepath = '/Users/jakravit/pyProjects/EAP/build/stramski_2007_mineral_nprime.csv'
+species = ['OAH1','SAN1', 'AUS1','ICE1','KUW1','NIG1','SAH1']
+nprimepath = 'stramski_2007_mineral_nprime.csv'
 nprime = pd.read_csv(nprimepath,index_col=0)
 
 # sample info
 
-nreal = np.linspace(1.1, 1.3, 5)
-jexp = [3.6, 4, 4.4]
+# nreal = np.linspace(1, 1.5, 3)
+nreal = [1.1, 1.4]
+jexp = [3.4, 4, 4.6]
 dmax = [10.1, 50.1, 100.1]
+rho = [.75e6, 2e6, 4e6]
 l = np.arange(.4, .9025, .0025).astype(np.float32)
 
 # Run
@@ -38,29 +40,30 @@ for sp in species:
     for n in nreal:
         for j in jexp:
             for d in dmax:
+                for r in rho:
             
-                # name
-                rho = (n - 0.7717) / 0.1475e-6 # (wozniak & stramski, 2004)
-                rname = '{}_{:.2f}_{:.2f}_{:.2f}_{}'.format(sp, n, rho, j, d)
-                final[rname] = {}
+                    # name
+                    #rho = (n - 0.7717) / 0.1475e-6 # (wozniak & stramski, 2004)
+                    rname = '{}_{:.2f}_{:.2f}_{:.2f}_{}'.format(sp, n, r, j, d)
+                    final[rname] = {}
+                    
+                    # EAP run
+                    print ('------ {} ------'.format(rname))
+                    result = twolay_min(l, kcore, n, r, j, d)
+                    
+                    # dict for current run
+                    result['nreal'] = n
+                    result['j'] = j
+                    result['rho'] = r
+                    result['dmax'] = d
                 
-                # EAP run
-                print ('------ {} ------'.format(rname))
-                result = twolay_min(l, kcore, n, rho, j, d)
-                
-                # dict for current run
-                result['nreal'] = n
-                result['j'] = j
-                result['rho'] = rho
-                result['dmax'] = d
-            
-                # add to final dict for mineral                
-                final[rname] = result
+                    # add to final dict for mineral                
+                    final[rname] = result
 
     # add to total minerals dict
     minerals[sp] = final
                 
-    with open('/Users/jakravit/pyProjects/EAP/build/minerals.p', 'wb') as fp:
+    with open('/Users/jakravit/data/EAP_NAP_dataset/minerals_v8.p', 'wb') as fp:
         pickle.dump(minerals,fp)    
 
 

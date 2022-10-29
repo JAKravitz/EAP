@@ -233,6 +233,6 @@ def EAP (l, im, Deff, ncore, nshell, Vs, Veff, ci, psd):
                        'Ci': Ci,
                        'psdvol':psdvol,
                        'VSF_theta': theta,
-                       'VSF_angles':np.rad2deg(theta)} 
+                       'VSF_angles': np.rad2deg(theta)} 
              
     return result
