@@ -5,14 +5,7 @@ Created on Mon Mar 28 17:59:22 2022
 
 @author: jakravit
 """
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Mon Mar 28 17:39:47 2022
-
-@author: jakravit
-"""
-#%%
+#%
 
 if __name__ == '__main__':
     import numpy as np
@@ -33,8 +26,8 @@ if __name__ == '__main__':
     client = Client(cluster)
     # client
     try:
-        phytodata = pd.read_csv('/nobackup/jakravit/git/EAP/phyto_data.csv')
-        outpath = '/nobackup/jakravit/data/phyto_siop_lib.p'
+        phytodata = pd.read_csv('/nobackup/jakravit/git/EAP/eap_vcourt.csv')
+        outpath = '/nobackup/jakravit/data/vcourt_lib.p'
     except:
         phytodata = pd.read_csv('/Users/jakravit/git/EAP/eap_vcourt.csv')
         outpath = '/Users/jakravit/data/vcourt_lib.p' 
@@ -46,15 +39,18 @@ if __name__ == '__main__':
         out = pd.DataFrame(array, index=Deff)
         return out
     
-    data = {'Green_algae':{},
-              'Cryptophytes':{},
-              'Diatoms':{},
-              'Dinoflagellates':{},
-              'Heterokonts':{},
-              'Haptophytes':{},
-              'Cyano_blue':{},
-              'Cyano_red':{},
-              'Rhodophytes':{}}
+    data = {'Chlorophyceae':{},
+            'Cryptophyceae':{},
+            'Coscinodiscophyceae':{},
+            'Bacillariophyceae':{},
+            'Dinophyceae':{},
+            'Prasinophyceae':{},
+            'Pelagophyceae':{},
+            'Haptophyceae':{},
+            'Cyanophyceae':{},
+            'Prymnesiophyceae':{},
+            'Rhaphidophyceae':{},
+            'Eustigmatophyceae':{}}
     
     parameters = ['Qc',
                   'Sigma_c',
@@ -90,13 +86,17 @@ if __name__ == '__main__':
         Deff = np.arange(k.Dmin,
                          k.Dmax,
                          k.Dint)
-        ncoreX = np.linspace(k.ncoremin,k.ncoremax,1)
-        nshellX = np.round(np.linspace(k.nshellmin, k.nshellmax, 2),2)
-        VsX = np.linspace(k.Vsmin, k.Vsmax, 2)
-        VeffX = np.linspace(k.Veffmin, k.Veffmax, 2)
-        ciX = np.linspace(k.cimin, k.cimax, 1)
+        # ncoreX = np.linspace(k.ncoremin,k.ncoremax,1)
+        ncoreX = [1.04]
+        # nshellX = np.round(np.linspace(k.nshellmin, k.nshellmax, 2),2)
+        nshellX = [1.1, 1.18]
+        # VsX = np.linspace(k.Vsmin, k.Vsmax, 2)
+        VsX = [.2, .5]
+        # VeffX = np.linspace(k.Veffmin, k.Veffmax, 2)
+        VeffX = [.6]
+        ciX = [k.cimin, k.cimax]
 
-        psdX = [np.arange(.5, 40, .5)]
+        psdX = [np.arange(.5, 100, .5)]
         # if k.Size_class == 'pico':
         #     psdX = [np.arange(.2, 10.2, .2)]
         # else:
