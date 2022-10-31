@@ -1,8 +1,8 @@
 #PBS -S /bin/bash
 #PBS -l select=1:ncpus=28:model=bro
 #PBS -l site=static_broadwell
-#PBS -q long
-#PBS -l walltime=30:00:00
+#PBS -q normal
+#PBS -l walltime=06:00:00
 #PBS -j oe
 #PBS -N EAP
 
@@ -13,7 +13,7 @@ module purge
 # load the module and environment
 module -a use /swbuild/analytix/tools/modulefiles
 module load miniconda3/v4
-source activate tf2_7
+source activate tf2_9
 
 # run python script
 python run_batch_EAP_loc.py
