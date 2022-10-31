@@ -4,7 +4,7 @@
 source /usr/share/modules/init/bash
 module use -a /swbuild/analytix/tools/modulefiles
 module load miniconda3/v4
-source activate tf2_9
+source activate tf2_8
 
 #run code
 echo "Executing eap runner on" `hostname` "in $PWD"
