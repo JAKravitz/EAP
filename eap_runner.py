@@ -37,11 +37,11 @@ def main():
     ##########
     
     p = args.work[0]
-    logging.debug("running step 1 %s  ...", p)
+    logging.debug("running %s  ...", p)
     
-    phytodata = pd.read_csv('phyto_data_v1027.csv',index_col=0)
-    outPath = '/nobackup/jakravit/EAP_batch_outputs/'
-    l = np.arange(.4, .9025, .0025).astype(np.float32) 
+    phytodata = pd.read_csv('phyto_data_v1101.csv',index_col=0)
+    outPath = '/nobackup/jakravit/data/EAP_batch_outputs/'
+    l = np.arange(.4, .901, .001).astype(np.float32) 
     
     def pandafy (array, Deff):
         out = pd.DataFrame(array, index=Deff)
@@ -55,9 +55,9 @@ def main():
     Deff = np.arange(k.Dmin, k.Dmax, k.Dint)
     ncoreX = [1.04]
     nshellX = np.round(np.linspace(k.nshellmin, k.nshellmax,3),2)
-    VsX = [.1, .35, .6]
+    VsX = [.2, .5]
     VeffX = [.6]
-    ciX = [3, 5, 7, 9]
+    ciX = [2, 3, 5, 7, 9, 12]
     if k.Size_class == 'pico':
         psdX = [np.arange(.2, 10.2, .2)]
     else:
@@ -100,7 +100,8 @@ def main():
         result['lambda'] = l
             
         optics[p][rname] = result
-        with open(outPath, 'w') as f:
+        out = outPath + p + '.p'
+        with open(out, 'wb') as f:
             pickle.dump(optics,f)
 
     # cleanup

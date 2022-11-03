@@ -1,69 +1,69 @@
-T. oceanica1
-T. pseudonana2
-C. curvisetum
-T. oceanica2
-D. brightwelli
-D. tertiolecta1
-N. atomus
-D. bioculata
-D. tertiolecta2
-D. tertiolecta3
-T. weissflogii
-M. polymorphus
-T. pseudonana1
-T. rotula
-C. calcitrans
-G. theta
-R. lens
-C. fragarioides
-S. elongatus
+T_oceanica1
+T_pseudonana2
+C_curvisetum
+T_oceanica2
+D_brightwelli
+D_tertiolecta1
+N_atomus
+D_bioculata
+D_tertiolecta2
+D_tertiolecta3
+T_weissflogii
+M_polymorphus
+T_pseudonana1
+T_rotula
+C_calcitrans
+G_theta
+R_lens
+C_fragarioides
+S_elongatus
 Prochlorococcus
-Synechococcus sp1
-A. marina
-Cyanobacterium sp1
-A. flos-aquae
-Anabaena sp.
-S. salina
-Phormidium sp. 
-N. spumigena
-Synechococcus sp2
-Nostoc sp. 
-Cyanobacterium sp2
-P. galeata
-G. simplex
-A. tamarense1
-A. carterae
-H. triquetra
-K. rotundatum
-P. micans1
-A. margalefi
-A. minutum
-A. affine
-A. catenella
-A. tamarense2
-Woloszynskia sp.
-P. micans2
-H. niei
-Nannochloropsis sp.
-N. oculata
-F. pinnata
-P. pinguis
-P. lutheri1
-E. huxleyi1
-P. parvum
-H. elongata
-P. calceolata
-P. subviridis
-P. provasolii
-M. pusilla
-Tetraselmis sp. 
-Pavlova sp.
-C. polylepis
-I. galbana1
-I. galbana2
-E. huxleyi2
-P. lutheri2
-Phaeocystis sp.
-H. akashiwo
-P. cruentum1
-P. cruentum2
+Synechococcus_sp1
+A_marina
+Cyanobacterium_sp1
+A_flos-aquae
+Anabaena_sp
+S_salina
+Phormidium_sp
+N_spumigena
+Synechococcus_sp2
+Nostoc_sp
+Cyanobacterium_sp2
+P_galeata
+G_simplex
+A_tamarense1
+A_carterae
+H_triquetra
+K_rotundatum
+P_micans1
+A_margalefi
+A_minutum
+A_affine
+A_catenella
+A_tamarense2
+Woloszynskia_sp
+P_micans2
+H_niei
+Nannochloropsis_sp
+N_oculata
+F_pinnata
+P_pinguis
+P_lutheri1
+E_huxleyi1
+P_parvum
+H_elongata
+P_calceolata
+P_subviridis
+P_provasolii
+M_pusilla
+Tetraselmis_sp
+Pavlova_sp
+C_polylepis
+I_galbana1
+I_galbana2
+E_huxleyi2
+P_lutheri2
+Phaeocystis_sp
+H_akashiwo
+P_cruentum1
+P_cruentum2

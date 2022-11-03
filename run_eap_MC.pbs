@@ -1,0 +1,14 @@
+#PBS -l select=1:ncpus=28:model=bro
+#PBS -l site=static_broadwell
+#PBS -q normal
+#PBS -l walltime=06:00:00
+#PBS -j oe
+#PBS -N EAP-MC
+#PBS -o /nobackup/jakravit/git/EAP/MCjob.log
+
+# Working directory 
+WDIR=/nobackup/jakravit/git/EAP/
+cd $WDIR
+
+# run code
+./run_eap_MC.sh

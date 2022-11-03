@@ -8,4 +8,4 @@ source activate tf2_9
 
 #run code
 echo "Executing eap runner on" `hostname` "in $PWD"
-/swbuild/analytix/tools/miniconda3_220407/envs/tf2_9/bin/python eap_runner.py $1
+/swbuild/analytix/tools/miniconda3_220407/envs/tf2_9/bin/python EAP_cyano_vacuole.py

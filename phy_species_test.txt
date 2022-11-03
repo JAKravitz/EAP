@@ -1,6 +1,10 @@
-T. oceanica1
-T. pseudonana2
-C. curvisetum
-T. oceanica2
-D. brightwelli
-D. tertiolecta1
+T_oceanica1
+T_pseudonana2
+C_curvisetum
+T_oceanica2
+D_brightwelli
+D_tertiolecta1
+N_atomus
+D_bioculata
+D_tertiolecta2
+D_tertiolecta3
