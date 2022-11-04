@@ -1,10 +1,10 @@
 #PBS -S /bin/bash
-#PBS -l select=10:ncpus=10:model=bro
-#PBS -l walltime=2:00:00
-#PBS -N eap-parallel
+#PBS -l select=10:ncpus=20:model=bro
+#PBS -l walltime=8:00:00
+#PBS -N 2lay-parallel
 #PBS -j oe
-#PBS -q devel
-#PBS -o /nobackup/jakravit/git/EAP/job-test.log
+#PBS -q normal
+#PBS -o /nobackup/jakravit/git/EAP/twoLay_job.log
 
 
 # Should likely match the above ncpus. This param is tasks per node, e.g. 2 selects * 10 NCPUS = 20 parallel's tasks running simultaneously
@@ -15,10 +15,10 @@ WDIR=/nobackup/jakravit/git/EAP/
 cd $WDIR
 
 # The work, one line in the text file is one gnu parallel's task
-SET=phy_species_test.txt
+SET=nap_species.txt
 
 # The executable, which is mapped to one line (sets.txt) per task
-EXEC=./eap_runner.sh
+EXEC=./twoLay_runner.sh
 
 # A modern version of gnu parallels. Assume MODULEPATH has /nex/modules/files
 module load /nex/modules/files/parallel/20210722_nex
