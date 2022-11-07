@@ -43,25 +43,25 @@ def main():
     
     optics = {}
     optics[p] = {}
-    if species == 'DET':
-        nreal = [1.03, 1.05]
-        jexp = [3.4, 4, 4.6]
-        dmax = [10.1, 50.1, 100.1]
-        rho = [.3e6, .5e6, .7e6]  
+    if p == 'DET':
+        nrealX = [1.03, 1.05]
+        jexpX = [3.4, 4, 4.6]
+        dmaxX = [10.1, 50.1, 100.1]
+        rhoX = [.3e6, .5e6, .7e6]  
         kcore = 0.010658 * np.exp(-0.007186* (l*1000)) #Stramski 2001 
         kcore = kcore.squeeze()
     else:    
-        nreal = [1.1, 1.4]
-        jexp = [3.4, 4, 4.6]
-        dmax = [10.1, 50.1, 100.1]
-        rho = [.75e6, 2e6, 4e6]
-        kcore = nprime[species].values.copy()  
+        nrealX = [1.1, 1.4]
+        jexpX = [3.4, 4, 4.6]
+        dmaxX = [10.1, 50.1, 100.1]
+        rhoX = [.75e6, 2e6, 4e6]
+        kcore = nprime[p].values.copy()  
         im_wv = nprime.index.values / 1000
         last = kcore[-1:]
         kcore = griddata(im_wv, kcore, l, 'linear',fill_value=last)
         kcore = kcore.squeeze()  
             
-    for run in itertools.product(nreal, jexp, dmax, rho):
+    for run in itertools.product(nrealX, jexpX, dmaxX, rhoX):
         nreal = run[0]
         jexp = run[1]
         dmax = run[2]
@@ -75,7 +75,7 @@ def main():
         optics[p][rname] = []
             
         # RUN twoLay
-        result = twolay(l, im, Deff, ncore, nshell, Vs, Veff, ci*1e6, psd)
+        result = twolay(l, kcore, nreal, jexp, dmax, rho)
         
         # add run info to dataframe
         result['nreal'] = nreal

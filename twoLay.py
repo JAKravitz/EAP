@@ -101,8 +101,7 @@ def twolay (l, kcore, nreal, j, dmax, rho):
         # then calc the phase fns, package effect and so on. For each Deff, for each wavelength.
     # end.
     for nii in np.arange(0,len(l)): # this is the wavelength loop
-        print(nii)
-    
+
         # declare lists to be filled on each iteration of the psd loop
         II, phaseMB, alpha, bbprob, bbprob1, Qbbro, checkMB, Qbro, Qcro, M1 = ([] for i in range (10))
         

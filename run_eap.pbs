@@ -8,7 +8,7 @@
 
 
 # Should likely match the above ncpus. This param is tasks per node, e.g. 2 selects * 10 NCPUS = 20 parallel's tasks running simultaneously
-NCPUS=10
+NCPUS=20
 
 # Working directory 
 WDIR=/nobackup/jakravit/git/EAP/
